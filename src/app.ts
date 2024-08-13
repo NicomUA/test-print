@@ -20,7 +20,9 @@ export function main() {
   return convertCoins(result);
 }
 
-main();
+const result = main();
+
+console.log(result);
 
 
 
