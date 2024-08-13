@@ -1,0 +1,37 @@
+{
+	"name": "ts",
+	"version": "1.0.0",
+	"main": "index.js",
+	"devDependencies": {
+		"@types/jest": "^29.5.12",
+		"@types/node": "^22.1.0"
+	},
+	"scripts": {
+		"test": "jest --coverage",
+		"build": "tsc --build ./tsconfig.build.json"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"jest": "^29.7.0",
+		"ts-jest": "^29.2.4"
+	},
+	"jest": {
+		"moduleFileExtensions": [
+			"js",
+			"json",
+			"ts"
+		],
+		"rootDir": "src",
+		"testRegex": ".*\\.spec\\.ts$",
+		"transform": {
+			"^.+\\.(t|j)s$": "ts-jest"
+		},
+		"collectCoverageFrom": [
+			"**/*.(t|j)s"
+		],
+		"coverageDirectory": "../coverage",
+		"testEnvironment": "node"
+	}
+}
