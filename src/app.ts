@@ -1,24 +1,28 @@
-import { AmountService } from './amount.service';
-import { ProductsService } from './products.service';
-import { PurchaseService } from './purchase.service';
-import { convertCoins } from './util';
-
+import { WendingMachine } from './machine';
+import { Product } from './product';
 
 export function main() {
-  const amountService = new AmountService();
-  const productService = new ProductsService();
+  const machine = new WendingMachine();
 
-  const service = new PurchaseService(amountService, productService);
+  const productA = new Product('A', 95);
+  const productB = new Product('B', 123);
+  const productC = new Product('C', 256);
 
-  amountService.insertCoin('1e');
-  amountService.insertCoin('1e');
-  amountService.insertCoin('1e');
-  amountService.insertCoin(50);
-  service.purchaseProduct('A');
+  machine.addProduct(productA);
+  machine.addProduct(productB);
+  machine.addProduct(productC);
 
-  const result = amountService.calculateChangeCoins();
-  return convertCoins(result);
+  machine.insertCoin('1e');
+  machine.insertCoin('1e');
+  machine.insertCoin('1e');
+  machine.insertCoin(50);
+
+  machine.purchaseProduct('A');
+
+  const change = machine.getExchange();
+  return change;
 }
+
 
 const result = main();
 
