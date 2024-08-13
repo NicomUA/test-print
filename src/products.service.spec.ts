@@ -7,12 +7,13 @@ describe('ProductsService:', () => {
 
   beforeEach((() => {
     service = new ProductsService();
+    service.addProduct(new Product('A', 95))
   }))
 
   describe('Positive flow:', () => {
     it('should return products list', () => {
       const result = service.getProductList();
-      expect(result).toEqual(['A', 'B', 'C']);
+      expect(result).toEqual(['A']);
     })
 
     it('should return product if exist', () => {

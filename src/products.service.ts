@@ -1,12 +1,9 @@
 import { Product } from './product'
 
+type productList = Record<string, Product>
 
 export class ProductsService {
-  private products = {
-    'A': new Product('A', 95),
-    'B': new Product('B', 123),
-    'C': new Product('C', 256),
-  };
+  private products: productList = {};
 
   public getProduct(productName: string): Product {
     return this.products[productName];
@@ -14,6 +11,14 @@ export class ProductsService {
 
   public hasProduct(productName) {
     return !!this.products[productName]
+  }
+
+  public addProduct(product) {
+    if (this.hasProduct(product.name)) {
+      throw Error('Product already exist');
+    }
+
+    this.products[product.name] = product;
   }
 
   public canPurchase(name: string, amount: number) {

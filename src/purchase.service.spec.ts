@@ -12,6 +12,7 @@ describe('Purchase Service:', () => {
   beforeEach((() => {
     amountService = new AmountService();
     productService = new ProductsService();
+    productService.addProduct(new Product('A', 95))
     service = new PurchaseService(amountService, productService);
   }))
 
